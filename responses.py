@@ -1,5 +1,6 @@
 from random import choice, randint
 
+
 def get_response(user_input: str) -> str:
     lowered: str = user_input.lower()
 
@@ -17,4 +18,3 @@ def get_response(user_input: str) -> str:
         return choice(['I do not understand...',
                        'What are you talking about?',
                        'Do you mind rephrasing that?'])
-

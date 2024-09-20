@@ -45,7 +45,10 @@ def emojiConverter(input):
     word = []
 
     # occurences dictionary
-    occurences = {}
+    occurrences = {}
+
+    #string to be returned
+    emoji_string = ""
 
     # check if input string is empty
     if not input:
@@ -57,20 +60,16 @@ def emojiConverter(input):
         # capitalize the characters
         upper_ch = ch.upper()
 
-        if upper_ch in occurences:
-            occurences[upper_ch] += 1
+        if upper_ch in occurrences:
+            occurrences[upper_ch] += 1
         else:
-            occurences[upper_ch] = 0
+            occurrences[upper_ch] = 0
 
         # ask if the character exists in the dictionary and if the number of occurrences
         # inside the input word is less then the number of available options for said character
-        if upper_ch in emojiDictionary and occurences[upper_ch] < len(emojiDictionary[upper_ch]):
+        if upper_ch in emojiDictionary and occurrences[upper_ch] < len(emojiDictionary[upper_ch]):
             # append the emoji that was not yet used in case we have more than 1 character of the same type in the word
-            word.append(emojiDictionary[upper_ch][occurences[upper_ch]])
+            emoji_string += emojiDictionary[upper_ch][occurrences[upper_ch]]
         else:
-            return 'Not enough emojis to represent this word.'
-
-    return word
-
-
-print(emojiConverter("aaa"))
+            return "Not enough emoji's to represent the word"
+    return emoji_string
