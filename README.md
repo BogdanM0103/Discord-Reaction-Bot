@@ -1,5 +1,7 @@
 This is a simple Discord Bot that runs on your machine.
 
+The bot works only when the python program is running.
+
 If your message in the Discord Server chat looks like "#{message}", the bot will take the "{message}" and convert each character to an emoji.
 
 The emoji's are taken from the dictionary found in the emojiConverter.py file.
