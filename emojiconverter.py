@@ -70,6 +70,7 @@ def emojiConverter(input):
         if upper_ch in emojiDictionary and occurrences[upper_ch] < len(emojiDictionary[upper_ch]):
             # append the emoji that was not yet used in case we have more than 1 character of the same type in the word
             emoji_string += emojiDictionary[upper_ch][occurrences[upper_ch]]
+            word.append(emojiDictionary[upper_ch][occurrences[upper_ch]])
         else:
             return "Not enough emoji's to represent the word"
     return emoji_string

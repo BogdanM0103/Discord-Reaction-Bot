@@ -6,7 +6,7 @@ def get_response(user_input: str) -> str:
 
     if lowered == '':
         return 'Well, you\'re awfully silent...'
-    elif 'hello' in lowered:
+    elif 'hello' or 'hi' in lowered:
         return 'Hello there!'
     elif 'how are you' in lowered:
         return 'Good, thanks!'
