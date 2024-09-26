@@ -7,7 +7,7 @@ emojiDictionary = {
     "D": ['\U0001F1E9', '↩️'],
     "E": ['\U0001F1EA', '✉️'],
     "F": ['\U0001F1EB', '🏁'],
-    "G": ['\U0001F1EC'],
+    "G": ['\U0001F1EC', '↪️'],
     "H": ['\U0001F1ED'],
     "I": ['\U0001F1EE', 'ℹ️', '🕧'],
     "J": ['\U0001F1EF', '🗾'],
@@ -112,5 +112,6 @@ def emojiConverter(input):
             # emoji_string += emojiDictionary[upper_ch][occurrences[upper_ch]]
             word.append(emojiDictionary[upper_ch][occurrences[upper_ch]])
         else:
-            return "Not enough emoji's to represent the word"
+            print("Not enough emoji's to represent the word.")
+            return ""
     return word
