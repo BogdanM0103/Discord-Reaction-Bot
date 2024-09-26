@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from discord import Intents, Client, Message
 
-from emojiconverter import emojiConverter
+from emojiconverter import emojiConverter, emojiDictionary, emojiList
 from responses import get_response
 
 # STEP 0: LOAD OUR TOKEN FROM SOMEWHERE SAFE
@@ -16,23 +16,30 @@ intents.message_content = True  # NOQA
 client: Client = Client(intents=intents)
 
 
+# Helper function to flatten the emojiDictionary for easier lookup
+def flatten_emoji_dictionary(emoji_dict):
+    flat_list = []
+    for emoji_group in emoji_dict.values():
+        flat_list.extend(emoji_group)
+    return flat_list
+
+
 # STEP 2: MESSAGE FUNCTIONALITY
 async def send_message(message: Message, user_message: str) -> None:
     if not user_message:
         print('(Message was empty because intents were not enabled probably)')
         return
 
-    # Check if the message starts with '#'
-    if user_message.startswith('#'):
-        user_message = user_message[1:]  # Remove '#' from the message
-        emoji_message = emojiConverter(user_message)  # Convert message to emojis
+    emoji_list = emojiConverter(user_message)
+    flat_emoji_list = flatten_emoji_dictionary(emojiDictionary)
 
-        # Check if emoji_message is a valid list and not empty
-        if emoji_message:
-            # Join the list into a single string and send it
-            await message.channel.send(emoji_message)
+    for emoji in emoji_list:
+        if emoji in flat_emoji_list:
+            # await message.channel.send(emoji)
+            await message.add_reaction(emoji)
+            print(f"{emoji} was found!")
         else:
-            await message.channel.send('Could not convert message to emojis.')
+            print(f"{emoji} was not found..")
 
 
 # STEP 3: HANDLING THE STARTUP FOR OUR BOT
