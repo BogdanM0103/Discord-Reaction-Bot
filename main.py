@@ -3,8 +3,7 @@ import os
 from dotenv import load_dotenv
 from discord import Intents, Client, Message
 
-from emojiconverter import emojiConverter, emojiDictionary, emojiList
-from responses import get_response
+from emojiconverter import emojiConverter, emojiDictionary
 
 # STEP 0: LOAD OUR TOKEN FROM SOMEWHERE SAFE
 load_dotenv()
