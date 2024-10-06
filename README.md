@@ -8,7 +8,7 @@ The emoji's are taken from the dictionary found in the emojiConverter.py file.
 
 IMPORTANT!!!!!!
 
-In order for the bot to work, you have to create a ".env" file inside your project folder where you write this:
+In order for the bot to work, you have to edit the ".env" file inside your project folder where you write this:
 
 DISCORD_TOKEN={your bot's token}
 
